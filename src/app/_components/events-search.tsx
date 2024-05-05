@@ -22,6 +22,7 @@ import { CalendarIcon } from "lucide-react";
 import { cn } from "~/lib/utils";
 import { Calendar } from "~/components/ui/calendar";
 import LocationPicker from "./map-picker";
+import { api } from "~/trpc/react";
 
 const formSchema = z.object({
   startDateTime: z.date(),
@@ -34,10 +35,17 @@ export default function EventsSearch() {
     resolver: zodResolver(formSchema),
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const query = api.event.searchEvent.useMutation({
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    // const data = api.event.searchEvent.useQuery(values);
+    query.mutate(values);
   }
   return (
     <div>
