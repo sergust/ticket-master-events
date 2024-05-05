@@ -23,6 +23,9 @@ import { cn } from "~/lib/utils";
 import { Calendar } from "~/components/ui/calendar";
 import LocationPicker from "./map-picker";
 import { api } from "~/trpc/react";
+import { useState } from "react";
+import Events from "./events";
+import { type ISearchApiResponse } from "~/types/eventTypes";
 
 const formSchema = z.object({
   startDateTime: z.date(),
@@ -31,20 +34,20 @@ const formSchema = z.object({
 });
 
 export default function EventsSearch() {
+  const [events, setEvents] = useState<ISearchApiResponse>();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
   const query = api.event.searchEvent.useMutation({
     onSuccess: (data) => {
+      setEvents(data);
       console.log(data);
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // const data = api.event.searchEvent.useQuery(values);
     query.mutate(values);
   }
   return (
@@ -163,6 +166,7 @@ export default function EventsSearch() {
           </Button>
         </form>
       </Form>
+      {events && <Events events={events} />}
     </div>
   );
 }
