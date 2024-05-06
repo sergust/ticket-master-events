@@ -24,6 +24,7 @@ export default function EventCard(props: IEventCardProps) {
             width="1024"
             height="683"
             alt=""
+            className="self-center"
           />
           <span>{props.event.info}</span>
         </div>

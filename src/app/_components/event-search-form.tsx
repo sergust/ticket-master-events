@@ -21,7 +21,8 @@ import { CalendarIcon } from "lucide-react";
 import { cn } from "~/lib/utils";
 import { Calendar } from "~/components/ui/calendar";
 import LocationPicker from "./map-picker";
-import { type FormSchema } from "~/types/formTypes";
+import { FormSchema } from "~/types/formTypes";
+import { type z } from "zod";
 
 export default function EventSearchForm({
   onSubmit,
@@ -128,7 +129,7 @@ export default function EventSearchForm({
               name="geoHash"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>GeoHash</FormLabel>
+                  <FormLabel>Select a location</FormLabel>
                   <FormControl>
                     <LocationPicker {...field} />
                   </FormControl>

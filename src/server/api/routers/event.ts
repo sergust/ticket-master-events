@@ -2,6 +2,7 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import axios from "axios";
 import { format } from "date-fns";
+import { type ISearchApiResponse } from "~/types/eventTypes";
 
 const ROOT_API = "https://app.ticketmaster.com/discovery/v2/events.json";
 const API_KEY = process.env.CONSUMER_KEY;
@@ -37,7 +38,7 @@ export const eventRouter = createTRPCRouter({
             size: 10,
           },
         });
-        return response.data as unknown;
+        return response.data as ISearchApiResponse;
       } catch (error) {
         console.error("Failed to fetch events:", error);
         throw new Error("Failed to fetch events from Ticketmaster API");
