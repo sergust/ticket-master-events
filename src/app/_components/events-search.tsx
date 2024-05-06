@@ -26,6 +26,7 @@ import { api } from "~/trpc/react";
 import { useState } from "react";
 import Events from "./events";
 import { type ISearchApiResponse } from "~/types/eventTypes";
+import { Skeleton } from "~/components/ui/skeleton";
 
 const formSchema = z.object({
   startDateTime: z.date(),
@@ -161,11 +162,22 @@ export default function EventsSearch() {
               />
             </div>
           </div>
-          <Button type="submit" className="mt-2">
+          <Button type="submit" className="mt-2" disabled={query.isPending}>
             Submit
           </Button>
         </form>
       </Form>
+
+      {query.isPending && (
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
+          </div>
+        </div>
+      )}
+
       {events && <Events events={events} />}
     </div>
   );
