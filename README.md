@@ -1,29 +1,64 @@
-# Create T3 App
+# Ticket Master Events
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+The application allows users to filter events by location and provide a start and end datetime. The goal of this project was not only to meet the requirements of the challenge but also to demonstrate my approach to problem-solving and technical skills.
 
-## What's next? How do I make an app with this?
+## Tech Stack
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+The project is built using the following technologies:
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- [Next.js](https://nextjs.org) - A React framework for building server-side rendered and static websites.
+- [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework for rapidly building custom designs.
+- [Shadcnui](https://ui.shadcn.com/) – A component library.
+- [tRPC](https://trpc.io) - A TypeScript-first RPC framework for building scalable APIs.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Installation
 
-## Learn More
+To get started with the project, follow these steps:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+1. Clone the repository:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```bash
+git clone git@github.com:sergust/ticket-master-events.git
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+2. Install the dependencies:
 
-## How do I deploy this?
+```bash
+cd ticket-master-events
+npm install
+```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+This will start the Next.js development server and you can access the application at [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+The following scripts are available for running various tasks:
+
+- `build`: Builds the Next.js application for production.
+- `dev`: Starts the Next.js development server.
+- `lint`: Runs linting checks using ESLint.
+- `start`: Starts the Next.js production server.
+
+## Deployment
+
+To deploy the application, you can follow the deployment guides for different platforms:
+
+- [Vercel](https://create.t3.gg/en/deployment/vercel)
+- [Netlify](https://create.t3.gg/en/deployment/netlify)
+- [Docker](https://create.t3.gg/en/deployment/docker)
+
+Please refer to the respective guides for more information on how to deploy the application to each platform.
+
+## Contributing
+
+Contributions to the project are welcome! If you find any issues or have any suggestions, feel free to open an issue or submit a pull request on the [GitHub repository](https://github.com/your-username/ticket-master-events).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

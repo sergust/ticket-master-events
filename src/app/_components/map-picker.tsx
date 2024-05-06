@@ -7,10 +7,20 @@ interface LocationPickerProps {
   onChange: (location: Location) => void;
 }
 
+/**
+ * LocationPicker component for selecting a location on a map.
+ * @param onChange - Callback function triggered when a location is selected.
+ * @param ref - Reference to the component.
+ * @returns JSX.Element - The rendered LocationPicker component.
+ */
 const LocationPicker = forwardRef(
   ({ onChange }: LocationPickerProps, ref: ForwardedRef<unknown>) => {
     const [position, setPosition] = useState(null);
 
+    /**
+     * MapEvents component for handling map events.
+     * @returns null
+     */
     const MapEvents = () => {
       const map = useMapEvents({
         click(e) {

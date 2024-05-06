@@ -5,6 +5,12 @@ interface EventsProps {
   events: ISearchApiResponse;
 }
 
+/**
+ * Renders a component that displays a list of events.
+ *
+ * @param props - The component props containing the events data.
+ * @returns The rendered component.
+ */
 export default function Events(props: EventsProps) {
   return (
     <div>

@@ -11,6 +11,12 @@ interface IEventCardProps {
   event: IEmbedded;
 }
 
+/**
+ * Renders an event card component.
+ *
+ * @param props - The props for the EventCard component.
+ * @returns The rendered EventCard component.
+ */
 export default function EventCard(props: IEventCardProps) {
   return (
     <Card>

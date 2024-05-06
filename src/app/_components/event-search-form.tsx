@@ -24,6 +24,12 @@ import LocationPicker from "./map-picker";
 import { FormSchema } from "~/types/formTypes";
 import { type z } from "zod";
 
+/**
+ * Renders a form for searching events.
+ *
+ * @param onSubmit - The callback function to be called when the form is submitted.
+ * @param isPending - A boolean indicating whether the form is currently pending.
+ */
 export default function EventSearchForm({
   onSubmit,
   isPending,
@@ -31,6 +37,7 @@ export default function EventSearchForm({
   onSubmit: (values: z.infer<typeof FormSchema>) => void;
   isPending: boolean;
 }) {
+  // Initialize the form using react-hook-form
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -40,12 +47,14 @@ export default function EventSearchForm({
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-my-8 my-8 ">
         <div className="flex flex-wrap gap-4">
           <div className="flex w-full flex-wrap gap-4">
+            {/* Start Date Field */}
             <FormField
               control={form.control}
               name="startDateTime"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Start date</FormLabel>
+                  {/* Popover for selecting start date */}
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -65,6 +74,7 @@ export default function EventSearchForm({
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
+                    {/* Calendar component for selecting start date */}
                     <PopoverContent className="w-auto p-0" align="start">
                       <Calendar
                         mode="single"
@@ -81,12 +91,14 @@ export default function EventSearchForm({
                 </FormItem>
               )}
             />
+            {/* End Date Field */}
             <FormField
               control={form.control}
               name="endDateTime"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>End date</FormLabel>
+                  {/* Popover for selecting end date */}
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -106,6 +118,7 @@ export default function EventSearchForm({
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
+                    {/* Calendar component for selecting end date */}
                     <PopoverContent className="w-auto p-0" align="start">
                       <Calendar
                         mode="single"
@@ -123,6 +136,7 @@ export default function EventSearchForm({
               )}
             />
           </div>
+          {/* Location Field */}
           <div className="w-full">
             <FormField
               control={form.control}
@@ -142,6 +156,7 @@ export default function EventSearchForm({
             />
           </div>
         </div>
+        {/* Submit Button */}
         <Button type="submit" className="mt-2" disabled={isPending}>
           Submit
         </Button>

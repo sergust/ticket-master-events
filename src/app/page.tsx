@@ -1,5 +1,9 @@
 import EventsSearch from "./_components/events-search";
 
+/**
+ * Renders the Home page component.
+ * @returns The JSX element representing the Home page.
+ */
 export default async function Home() {
   return (
     <main className="min-h-screen bg-yellow-50/50">

@@ -1,5 +1,9 @@
 import { Skeleton } from "~/components/ui/skeleton";
 
+/**
+ * Renders a skeleton component for an event card.
+ * @returns JSX.Element representing the skeleton component.
+ */
 export default function EventCardSkeleton() {
   return (
     <div className="flex flex-col space-y-3">
