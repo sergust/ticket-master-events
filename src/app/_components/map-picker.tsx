@@ -1,10 +1,26 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import { useState, forwardRef } from "react";
-import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import { useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import ngeohash from "ngeohash";
 import { type LatLngLiteral, type Map } from "leaflet";
+
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  {
+    ssr: false,
+  },
+);
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false },
+);
+
+const Marker = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Marker),
+  { ssr: false },
+);
 
 interface LocationPickerProps {
   onChange: (location: string) => void;
