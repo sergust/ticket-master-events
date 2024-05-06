@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useState, forwardRef, type ForwardedRef } from "react";
+import { useState, forwardRef, type ForwardedRef, LegacyRef } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import ngeohash from "ngeohash";
@@ -17,7 +18,7 @@ interface LocationPickerProps {
  * @returns JSX.Element - The rendered LocationPicker component.
  */
 const LocationPicker = forwardRef(
-  ({ onChange }: LocationPickerProps, ref: ForwardedRef<unknown>) => {
+  ({ onChange }: LocationPickerProps, ref: ForwardedRef<any>) => {
     const [position, setPosition] = useState<LatLngLiteral>();
 
     /**
