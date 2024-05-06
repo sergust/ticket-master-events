@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useState, forwardRef, type ForwardedRef } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import ngeohash from "ngeohash";
+import { type LatLngLiteral } from "leaflet";
 
 interface LocationPickerProps {
-  onChange: (location: Location) => void;
+  onChange: (location: string) => void;
 }
 
 /**
@@ -15,19 +18,20 @@ interface LocationPickerProps {
  */
 const LocationPicker = forwardRef(
   ({ onChange }: LocationPickerProps, ref: ForwardedRef<unknown>) => {
-    const [position, setPosition] = useState(null);
+    const [position, setPosition] = useState<LatLngLiteral>();
 
     /**
      * MapEvents component for handling map events.
      * @returns null
      */
+
     const MapEvents = () => {
       const map = useMapEvents({
-        click(e) {
+        click(e: { latlng: LatLngLiteral }) {
           const { lat, lng } = e.latlng;
           setPosition(e.latlng);
           const geohash = ngeohash.encode(lat, lng);
-          onChange(geohash);
+          onChange(geohash); // Fix: Update the type of the onChange function parameter to accept a string instead of a Location.
         },
       });
       return null;
@@ -35,7 +39,7 @@ const LocationPicker = forwardRef(
 
     return (
       <MapContainer
-        center={[45.4, -75.7]}
+        center={{ lat: 45.4, lng: -75.7 }}
         zoom={13}
         className="z-0 h-96 w-full"
         ref={ref}
