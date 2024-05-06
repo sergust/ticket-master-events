@@ -159,7 +159,7 @@ interface Embedded {
   attractions: EmbeddedAttraction[];
 }
 
-interface IEmbedded {
+export interface IEmbedded {
   name: string;
   type: string;
   id: string;
